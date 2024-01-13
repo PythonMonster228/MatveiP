@@ -1,23 +1,18 @@
+import Button from 'react-bootstrap/Button';
 import logo from './logo.svg';
 import './App.css';
+import LoginPage from './components/LoginPage';
+import { useState } from "react";
 
 function App() {
+  const [currentSection, setCurrentSection] = useState('catalog');
+  const handleClick = (section) => {
+    setCurrentSection(section);
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Button onClick={() => handleClick('LoginPage')} >Добавить пользователя</Button>
+      {currentSection === 'LoginPage' && <LoginPage />}
     </div>
   );
 }
